@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotCoin - Boosters</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .popup-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .popup-message.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="boost">
+    <div class="header">
+        <a href="./index.html">
+            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 11.9299H2" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.00009 19L2.84009 14C2.5677 13.7429 2.35071 13.433 2.20239 13.0891C2.05407 12.7452 1.97754 12.3745 1.97754 12C1.97754 11.6255 2.05407 11.2548 2.20239 10.9109C2.35071 10.567 2.5677 10.2571 2.84009 10L8.00009 5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </div>
+
+    <div class="user-balance">
+        <div class="balance-title">
+            <span class="select-none">Your balance</span>
+        </div>
+        <div class="balance-coins">
+            <img src="./assets/images/coin.png" width="50px" alt="">
+            <span id="balance" class="select-none">0</span>
+        </div>
+        <div class="balance-guid">
+        </div>
+    </div>
+
+    <div class="free-boosts">
+        <div class="free-boosts-title">
+            <h2>Free daily boosters</h2>
+        </div>
+        <div class="free-boosts-buttons">
+            <div class="free-boost-button m-r" id="turbo">
+                <div class="free-boosts-detail">
+                    <span class="select-none">Turbo</span>
+                    <span class="available select-none">3/3 available</span>
+                </div>
+                <div>
+                    <img src="./assets/images/rocket.png" width="30px" alt="">
+                </div>
+            </div>
+            <div class="free-boost-button m-l" id="charge">
+                <div class="free-boosts-detail">
+                    <span class="select-none">Full Energy</span>
+                    <span class="available select-none">3/3 available</span>
+                </div>
+                <div>
+                    <img src="./assets/images/thunder.png" width="30px" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="boosters">
+        <div class="boosters-title">
+            <h2 class="select-none">Boosters</h2>
+        </div>
+        <div class="boosters-buttons">
+            <div class="boosters-button m-b-1" data-cost="128" data-upgrade="1" data-type="multitap">
+                <div class="boosters-button-detail">
+                    <div class="boosters-button-image">
+                        <img src="./assets/images/point_up.png" width="50px">
+                    </div>
+                    <div>
+                        <div>
+                            <h4>Multitap</h4>
+                        </div>
+                        <div class="boosters-button-data">
+                            <img src="./assets/images/coin.png" width="20px" class="m-r-25">
+                            <h5 class="m-r-25">128</h5>
+                            <span class="m-r-25">•</span>
+                            <p class="level" data-type="multitap">1 lvl</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 5L14.15 10C14.4237 10.2563 14.6419 10.5659 14.791 10.9099C14.9402 11.2539 15.0171 11.625 15.0171 12C15.0171 12.375 14.9402 12.7458 14.791 13.0898C14.6419 13.4339 14.4237 13.7437 14.15 14L9 19" stroke="#ffffff" opacity="0.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="boosters-button m-b-1" data-cost="128" data-upgrade="1" data-type="energy">
+                <div class="boosters-button-detail">
+                    <div class="boosters-button-image">
+                        <img src="./assets/images/battery.png" width="45px">
+                    </div>
+                    <div>
+                        <div>
+                            <h4>Energy Limit</h4>
+                        </div>
+                        <div class="boosters-button-data">
+                            <img src="./assets/images/coin.png" width="20px" class="m-r-25">
+                            <h5 class="m-r-25">128</h5>
+                            <span class="m-r-25">•</span>
+                            <p class="level" data-type="energy">1 lvl</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 5L14.15 10C14.4237 10.2563 14.6419 10.5659 14.791 10.9099C14.9402 11.2539 15.0171 11.625 15.0171 12C15.0171 12.375 14.9402 12.7458 14.791 13.0898C14.6419 13.4339 14.4237 13.7437 14.15 14L9 19" stroke="#ffffff" opacity="0.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="boosters-button m-b-1" data-cost="64" data-upgrade="1" data-type="multitap">
+                <div class="boosters-button-detail">
+                    <div class="boosters-button-image">
+                        <img src="./assets/images/thunder.png" width="50px">
+                    </div>
+                    <div>
+                        <div>
+                            <h4>Multitap</h4>
+                        </div>
+                        <div class="boosters-button-data">
+                            <img src="./assets/images/coin.png" width="20px" class="m-r-25">
+                            <h5 class="m-r-25">64</h5>
+                            <span class="m-r-25">•</span>
+                            <p class="level" data-type="multitap">1 lvl</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 5L14.15 10C14.4237 10.2563 14.6419 10.5659 14.791 10.9099C14.9402 11.2539 15.0171 11.625 15.0171 12C15.0171 12.375 14.9402 12.7458 14.791 13.0898C14.6419 13.4339 14.4237 13.7437 14.15 14L9 19" stroke="#ffffff" opacity="0.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="boosters-button" data-cost="64" data-upgrade="1" data-type="energy">
+                <div class="boosters-button-detail">
+                    <div class="boosters-button-image">
+                        <img src="./assets/images/robot_face.png" width="50px">
+                    </div>
+                    <div>
+                        <div>
+                            <h4>AutoMine</h4>
+                        </div>
+                        <div class="boosters-button-data">
+                            <img src="./assets/images/coin.png" width="20px" class="m-r-25">
+                            <h5 class="m-r-25">64</h5>
+                            <span class="m-r-25">•</span>
+                            <p class="level" data-type="energy">1 lvl</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 5L14.15 10C14.4237 10.2563 14.6419 10.5659 14.791 10.9099C14.9402 11.2539 15.0171 11.625 15.0171 12C15.0171 12.375 14.9402 12.7458 14.791 13.0898C14.6419 13.4339 14.4237 13.7437 14.15 14L9 19" stroke="#ffffff" opacity="0.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-message" id="popupMessage"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const boosters = document.querySelectorAll(".boosters-button");
+            const balanceElement = document.getElementById("balance");
+            const popupMessage = document.getElementById("popupMessage");
+
+            // Initialize variables
+            let coins = Number(localStorage.getItem('coins')) || 0;
+            let total = Number(localStorage.getItem('total')) || 750;
+            let power = Number(localStorage.getItem('power')) || 750;
+            let count = Number(localStorage.getItem('count')) || 1;
+            let multitap = Number(localStorage.getItem('multitap')) || 1;
+
+            // Initialize costs and levels
+            boosters.forEach(booster => {
+                const type = booster.getAttribute("data-type");
+                const cost = localStorage.getItem(`${type}Cost`) || booster.getAttribute("data-cost");
+                const level = localStorage.getItem(`${type}Level`) || 1;
+                booster.setAttribute("data-cost", cost);
+                booster.querySelector("h5").innerText = Number(cost).toLocaleString();
+                booster.querySelector(".level").innerText = `${level} lvl`;
+            });
+
+            // Set initial balance display
+            balanceElement.innerText = coins.toLocaleString();
+
+            function showPopup(message) {
+                popupMessage.innerText = message;
+                popupMessage.classList.add("show");
+                setTimeout(() => {
+                    popupMessage.classList.remove("show");
+                }, 3000);
+            }
+
+            boosters.forEach(booster => {
+                booster.addEventListener("click", function() {
+                    let cost = parseInt(this.getAttribute("data-cost"));
+                    const upgrade = parseInt(this.getAttribute("data-upgrade"));
+                    const type = this.getAttribute("data-type");
+
+                    if (coins >= cost) {
+                        coins -= cost;
+                        localStorage.setItem('coins', coins);
+                        balanceElement.innerText = coins.toLocaleString();
+
+                        cost = Math.round(cost * 2); // Increase cost by 20%
+                        this.setAttribute("data-cost", cost);
+                        this.querySelector("h5").innerText = cost.toLocaleString();
+                        localStorage.setItem(`${type}Cost`, cost);
+
+                        let level = parseInt(localStorage.getItem(`${type}Level`)) || 1;
+                        level += upgrade;
+                        localStorage.setItem(`${type}Level`, level);
+                        this.querySelector(".level").innerText = `${level} lvl`;
+
+                        if (type === "multitap") {
+                            multitap += upgrade;
+                            localStorage.setItem('multitap', multitap);
+                            document.querySelectorAll(`.level[data-type="multitap"]`).forEach(el => {
+                                el.innerText = `${level} lvl`;
+                            });
+                        } else if (type === "energy") {
+                            total += 500;
+                            localStorage.setItem('total', total);
+                            document.querySelectorAll(`.level[data-type="energy"]`).forEach(el => {
+                                el.innerText = `${level} lvl`;
+                            });
+                        }
+
+                        showPopup(`Boost applied! ${type.charAt(0).toUpperCase() + type.slice(1)} increased by ${upgrade}.`);
+                    } else {
+                        showPopup("Not enough balance to apply this boost.");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
