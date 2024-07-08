@@ -1,0 +1,26 @@
+{
+    "name": "fretcoin",
+    "version": "1.0.0",
+    "description": "FretCoin web application",
+    "main": "main.js",
+    "scripts": {
+      "start": "parcel index.html",
+      "build": "parcel build index.html --no-minify",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "firebase": "^9.0.0"
+    },
+    "devDependencies": {
+      "parcel-bundler": "^1.12.5"
+    },
+    "browserslist": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ]
+  }
+  

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notcoin - Frens</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <meta name="theme-color" content="#1e1e1e">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon/favicon.ico">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .frens-main {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .frens-count span,
+        .frens-total-count span {
+            font-size: 2rem;
+            color: #4a90e2;
+        }
+
+        .frens-total-earn {
+            margin: 20px 0;
+        }
+
+        .frens-total-count img {
+            vertical-align: middle;
+        }
+
+        .frens-help {
+            background-color: #1e1e1e;
+            margin: 20px 10px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .frens-help-title span {
+            font-weight: bold;
+            color: #4a90e2;
+        }
+
+        .frens-help-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .frens-help-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .frens-help-image img {
+            margin-right: 10px;
+        }
+
+        .frens-help-box h5 {
+            margin: 0;
+            color: #4a90e2;
+        }
+
+        .frens-help-box img {
+            vertical-align: middle;
+        }
+
+        .frens-open-detail a {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+
+        .frens-invite {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+
+        #referralPanel {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1e1e1e;
+            border: 2px solid #4a90e2;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1000;
+            width: 90%;
+            max-width: 400px;
+            transition: transform 0.5s ease;
+        }
+
+        #referralPanel.active {
+            display: block;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .popup-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .popup-message.show {
+            opacity: 1;
+        }
+
+        #referralPanel p {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #4a90e2;
+        }
+
+        #referralPanel input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #333;
+            color: #ffffff;
+        }
+
+        #referralPanel button {
+            background-color: #4a90e2;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #referralPanel button:hover {
+            background-color: #3b78ca;
+        }
+
+        @media (min-width: 768px) {
+            #referralPanel {
+                width: 50%;
+                left: 25%;
+            }
+        }
+
+        .header {
+            padding: 10px;
+            text-align: left;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            background-color: #121212;
+        }
+
+        .header svg {
+            fill: #4a90e2;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body class="frens">
+    <div class="header">
+        <a href="./index.html">
+            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 11.9299H2" stroke="#4a90e2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.00009 19L2.84009 14C2.5677 13.7429 2.35071 13.433 2.20239 13.0891C2.05407 12.7452 1.97754 12.3745 1.97754 12C1.97754 11.6255 2.05407 11.2548 2.20239 10.9109C2.35071 10.567 2.5677 10.2571 2.84009 10L8.00009 5" stroke="#4a90e2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </div>
+
+    <div class="frens-main">
+        <div class="frens-count">
+            <span id="frensCount">0 Frens</span>
+        </div>
+
+        <div class="frens-total-earn">
+            <div class="frens-total-count">
+                <span>+0k</span>
+                <img src="./assets/images/coin.png" width="20px">
+            </div>
+            <div>
+                <span>Top user</span>
+                <span class="leaders">leaders</span>
+            </div>
+            <div>
+                <svg width="23px" height="23px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 5L14.15 10C14.4237 10.2563 14.6419 10.5659 14.791 10.9099C14.9402 11.2539 15.0171 11.625 15.0171 12C15.0171 12.375 14.9402 12.7458 14.791 13.0898C14.6419 13.4339 14.4237 13.7437 14.15 14L9 19" stroke="#ffffff" opacity="0.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="frens-help">
+        <div class="frens-help-title">
+            <span>Invite frens to get bonuses</span>
+        </div>
+
+        <div class="frens-help-box">
+            <div class="frens-help-content">
+                <div class="frens-help-image">
+                    <img src="./assets/images/golden.png" width="50px">
+                </div>
+                <div class="fren-help-text">
+                    <h5>Invite fren</h5>
+                    <div>
+                        <img src="./assets/images/coin.png" width="15px">
+                        <span>2,500</span>
+                        <span>for you and fren</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="frens-open-detail">
+                <a href="#">Open details</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="frens-invite">
+        <div class="frens-invite-button" id="inviteButton">
+            <a href="#">Invite a fren</a>
+        </div>
+    </div>
+
+    <div id="referralPanel">
+        <p>Your referral link:</p>
+        <input type="text" id="referralLink" readonly>
+        <button id="copyButton">Copy</button>
+        <button id="closeButton">Close</button>
+    </div>
+    <div class="popup-message" id="popupMessage">Text copied</div>
+
+    <script>
+        function updateFrensCount() {
+            const frensCount = localStorage.getItem('frensCount') || 0;
+            document.getElementById('frensCount').textContent = `${frensCount} Frens`;
+        }
+
+        function showPopup() {
+            const popupMessage = document.getElementById('popupMessage');
+            popupMessage.classList.add('show');
+
+            setTimeout(() => {
+                popupMessage.classList.remove('show');
+            }, 3000);
+        }
+
+        function generateReferralCode() {
+            return 'xxxxxx'.replace(/x/g, function () {
+                return (Math.random() * 36 | 0).toString(36);
+            });
+        }
+
+        document.getElementById('inviteButton').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            let referralCode = localStorage.getItem('referralCode');
+            if (!referralCode) {
+                referralCode = generateReferralCode();
+                localStorage.setItem('referralCode', referralCode);
+            }
+
+            const referralLink = `https://t.me/FretCoin_bot/FretCoins?start=${referralCode}`;
+
+            const referralPanel = document.getElementById('referralPanel');
+            referralPanel.classList.add('active');
+
+            document.getElementById('referralLink').value = referralLink;
+        });
+
+        document.getElementById('copyButton').addEventListener('click', function () {
+            const referralLinkInput = document.getElementById('referralLink');
+            referralLinkInput.select();
+            referralLinkInput.setSelectionRange(0, 99999);
+
+            document.execCommand('copy');
+            showPopup();
+        });
+
+        document.getElementById('closeButton').addEventListener('click', function () {
+            const referralPanel = document.getElementById('referralPanel');
+            referralPanel.classList.remove('active');
+        });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const referralCode = urlParams.get('start');
+
+        console.log("Referral Code from URL:", referralCode);
+
+        if (referralCode) {
+            let count = localStorage.getItem('count') || 0;
+            count = Number(count) + 2000;
+            localStorage.setItem('count', count);
+
+            localStorage.setItem('referredBy', referralCode);
+
+            let frensCount = localStorage.getItem('frensCount') || 0;
+            frensCount = Number(frensCount) + 1;
+            localStorage.setItem('frensCount', frensCount);
+
+            updateFrensCount();
+            alert('You have received a bonus of 2,000 coins for using a referral link!');
+        } else {
+            console.log("No referral code found in URL.");
+        }
+
+        updateFrensCount();
+    </script>
+</body>
+</html>
