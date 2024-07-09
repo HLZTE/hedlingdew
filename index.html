@@ -25,16 +25,7 @@
             align-items: center;
         }
     </style>
-    <script>
-        function detectDeviceAndRedirect() {
-            const userAgent = navigator.userAgent.toLowerCase();
-            const isMobile = /mobile|android|iphone|ipad|tablet/.test(userAgent);
 
-            if (!isMobile) {
-                window.location.href = './desktop.html';
-            }
-        }
-    </script>
 </head>
 <body onload="detectDeviceAndRedirect()">
     <div id="background-particles" class="container"></div>
